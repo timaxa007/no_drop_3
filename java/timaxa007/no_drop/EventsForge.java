@@ -26,7 +26,7 @@ public class EventsForge {
 			if (!itemStack.hasTagCompound()) continue;
 			if (itemStack.getTagCompound().hasKey("NoDrop")) {
 				save_drops.add(itemStack);
-				event.drops.remove(i);
+				event.drops.remove(i--);
 			}
 		}
 
@@ -44,6 +44,7 @@ public class EventsForge {
 	@SubscribeEvent
 	public void doPlayerEventClone(PlayerEvent.Clone event) {
 		if (!event.original.getEntityData().hasKey("NoDrops", NBT.TAG_LIST)) return;
+
 		NBTTagList list = event.original.getEntityData().getTagList("NoDrops", NBT.TAG_COMPOUND);
 		event.entityPlayer.getEntityData().setTag("NoDrops", list);
 	}
