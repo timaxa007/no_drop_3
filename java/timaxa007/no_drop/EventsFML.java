@@ -19,6 +19,8 @@ public class EventsFML {
 				event.player.dropPlayerItemWithRandomChoice(itemStack, false);
 		}
 
+		event.player.getEntityData().removeTag("NoDrops");
+
 	}
 
 }
